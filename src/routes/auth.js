@@ -6,7 +6,6 @@ const {validateSignUpData}=require("../utils/validation")
 
 authRouter.post("/login",async(req,res)=>
 {
-  console.log("Hello world")
   try{
     const {emailId,password}=req.body;
     const user=await User.findOne({emailId:emailId});

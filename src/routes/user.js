@@ -29,7 +29,6 @@ userRouter.get("/user/connections",UserAuth,async (req,res)=>
         const connections=await ConnectionRequest.find({
             $or:[{toUserId:loggedInUser._id,status:"accepted"},{fromUserId:loggedInUser._id,status:"accepted"}]
         }).populate("fromUserId",USER_SAFE_DATA).populate("toUserId",USER_SAFE_DATA);
-        console.log(connections);
         const data=connections.map((item)=>{
             if(item.fromUserId._id.toString()===loggedInUser._id.toString())
             {

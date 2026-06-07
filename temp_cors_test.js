@@ -12,12 +12,10 @@ const options = {
   },
 };
 const req = http.request(options, (res) => {
-  console.log("statusCode", res.statusCode);
-  console.log("headers", res.headers);
   let body = "";
   res.on("data", (chunk) => (body += chunk));
   res.on("end", () => {
-    console.log("body", body);
+    consol.log("body", body);
   });
 });
 req.on("error", (err) => {
