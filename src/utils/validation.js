@@ -13,6 +13,14 @@ const validateSignUpData=(req)=>
         throw new Error("Please enter a strong Password")
     }
 };
+const validateEditProfileData=(req)=>
+{
+    const data=req.body;
+ const ALLOWED_UPDATES=["photoUrl","about","gender","age","skills","firstName","lastName"];
+  const isUpdateAllowed=Object.keys(data).every((fields)=>ALLOWED_UPDATES.includes(fields)) 
+  return isUpdateAllowed ? true :false;
+}
 module.exports={
-    validateSignUpData
+    validateSignUpData,
+    validateEditProfileData
 }
