@@ -66,7 +66,7 @@ userRouter.get("/feed",UserAuth,async(req,res)=>
         });
         const users=await User.find({
             $and:[{_id:{$nin:Array.from(hideUsersFromFeed)}},{_id:{$ne:loggedInUser._id}}]
-        }).select(USER_SAFE_DATA).skip(skip).limit(limit); 
+        }).select(USER_SAFE_DATA); 
 
         res.json({message:"Feed fetched successfully",data:users})
 

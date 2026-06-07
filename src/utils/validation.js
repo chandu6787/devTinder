@@ -12,6 +12,7 @@ const validateSignUpData=(req)=>
     {
         throw new Error("Please enter a strong Password")
     }
+ 
 };
 const validateEditProfileData=(req)=>
 {
