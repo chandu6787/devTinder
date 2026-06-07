@@ -17,7 +17,11 @@ authRouter.post("/login",async(req,res)=>
     if(isPasswordValid)
     {
       const token=await user.getJWT();
-      res.cookie("token",token);
+      res.cookie("token", token, {
+  httpOnly: true,
+  sameSite: "None",  // 👈 allows cross-domain
+  secure: true,       // 👈 required with sameSite: None (needs HTTPS)
+});
       res.status(200).send(user);
     }
     else{
